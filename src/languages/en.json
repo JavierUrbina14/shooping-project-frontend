@@ -1,0 +1,23 @@
+{
+    "navbar": {
+        "searchplaceholder": "Search the best products here..."
+    },
+    "loginpage": {
+        "title": "Login",
+        "register": "or register here",
+        "email": "Type your email",
+        "password": "Type your password",
+        "login": "Sign in",
+        "forgotpassword": "Forgot your password?"
+    },
+    "registerpage": {
+        "title": "Register Account",
+        "name": "Name",
+        "lastname": "Last name",
+        "email": "Email",
+        "password": "Password",
+        "confirmpassword": "Confirm your password",
+        "register": "Create account",
+        "haveaccount": "You have an account?"
+    }
+}

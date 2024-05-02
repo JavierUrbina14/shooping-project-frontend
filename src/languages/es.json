@@ -1,0 +1,23 @@
+{
+    "navbar": {
+        "searchplaceholder": "Busca los mejores productos aquí..."
+    },
+    "loginpage": {
+        "title": "Iniciar sesión",
+        "register": "o registrate aquí",
+        "email": "Ingrese su email",
+        "password": "Ingrese su contraseña",
+        "login": "Iniciar sesión",
+        "forgotpassword": "¿Olvidaste tu contraseña?"
+    },
+    "registerpage": {
+        "title": "Registro de usuario",
+        "name": "Nombre",
+        "lastname": "Apellido",
+        "email": "Email",
+        "password": "Contraseña",
+        "confirmpassword": "Confirmar contraseña",
+        "register": "Registrarse",
+        "haveaccount": "¿Ya tienes una cuenta?"
+    }
+}
