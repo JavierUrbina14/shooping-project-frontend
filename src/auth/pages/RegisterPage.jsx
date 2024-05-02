@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useForm } from '../../hooks/useForm'
 import { AuthLayout } from '../layout/AuthLayout'
+import { useDispatch } from 'react-redux'
+import { startCreateUser } from '../../redux/auth/thunks'
 
 const initialForm = {
-  firstName: '',
-  lastName: '',
+  firstname: '',
+  lastname: '',
   email: '',
   firstPassword: '',
   secondPassword: ''
@@ -15,12 +17,17 @@ const initialForm = {
 
 export const RegisterPage = () => {
   const [t] = useTranslation('global')
-  const { firstName, lastName, email, firstPassword, secondPassword, onInputChange } = useForm(initialForm)
+  const dispatch = useDispatch()
+  const { firstname, lastname, email, firstPassword, secondPassword, onInputChange } = useForm(initialForm)
 
   const HandleSubmit = (event) => {
     event.preventDefault()
-    console.log({ firstName, lastName, email, firstPassword, secondPassword })
-    // dispachar la acción de registro
+    if (firstPassword !== secondPassword) {
+      console.log('Las contraseñas no coinciden')
+      return
+    }
+
+    dispatch(startCreateUser({ firstname, lastname, email, password: firstPassword }))
   }
 
   return (
@@ -34,8 +41,8 @@ export const RegisterPage = () => {
             <SearchField
               placeholder={t('registerpage.name')}
               type='text'
-              name='firstName'
-              value={firstName}
+              name='firstname'
+              value={firstname}
               onChange={onInputChange}
             />
           </div>
@@ -43,8 +50,8 @@ export const RegisterPage = () => {
             <SearchField
               placeholder={t('registerpage.lastname')}
               type='text'
-              name='lastName'
-              value={lastName}
+              name='lastname'
+              value={lastname}
               onChange={onInputChange}
             />
           </div>

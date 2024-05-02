@@ -3,6 +3,8 @@ import { SearchField } from '../../components/SearchField'
 import { useTranslation } from 'react-i18next'
 import { useForm } from '../../hooks/useForm'
 import { AuthLayout } from '../layout/AuthLayout'
+import { useDispatch } from 'react-redux'
+import { startLogin } from '../../redux/auth/thunks'
 
 const intialForm = {
   email: '',
@@ -12,10 +14,11 @@ const intialForm = {
 export const LoginPage = () => {
   const [t] = useTranslation('global')
   const { email, password, onInputChange } = useForm(intialForm)
+  const dispatch = useDispatch()
 
   const HandleSubmit = (event) => {
     event.preventDefault()
-    console.log({ email, password })
+    dispatch(startLogin({ email, password }))
   }
 
   return (
