@@ -9,6 +9,7 @@ import { store } from './redux/store'
 import i18next from 'i18next'
 import englishDictionary from './languages/en.json'
 import spanishDictionary from './languages/es.json'
+import 'react-toastify/dist/ReactToastify.css'
 import 'tailwindcss/tailwind.css'
 import './styles.css'
 

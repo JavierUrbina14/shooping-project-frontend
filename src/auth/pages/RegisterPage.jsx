@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SearchField } from '../../components/SearchField'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useForm } from '../../hooks/useForm'
 import { AuthLayout } from '../layout/AuthLayout'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { startCreateUser } from '../../redux/auth/thunks'
+import { ToastContainer, toast } from 'react-toastify'
 
 const initialForm = {
   firstname: '',
@@ -17,8 +18,13 @@ const initialForm = {
 
 export const RegisterPage = () => {
   const [t] = useTranslation('global')
+  const { errorMessage } = useSelector(state => state.auth)
   const dispatch = useDispatch()
   const { firstname, lastname, email, firstPassword, secondPassword, onInputChange } = useForm(initialForm)
+
+  useEffect(() => {
+    toast.error(errorMessage)
+  }, [errorMessage])
 
   const HandleSubmit = (event) => {
     event.preventDefault()
@@ -90,6 +96,7 @@ export const RegisterPage = () => {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </AuthLayout>
   )
 }

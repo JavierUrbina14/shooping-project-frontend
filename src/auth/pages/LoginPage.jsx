@@ -1,10 +1,12 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { SearchField } from '../../components/SearchField'
 import { useTranslation } from 'react-i18next'
+import { SearchField } from '../../components/SearchField'
 import { useForm } from '../../hooks/useForm'
 import { AuthLayout } from '../layout/AuthLayout'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { startLogin } from '../../redux/auth/thunks'
+import { ToastContainer, toast } from 'react-toastify'
 
 const intialForm = {
   email: '',
@@ -14,7 +16,12 @@ const intialForm = {
 export const LoginPage = () => {
   const [t] = useTranslation('global')
   const { email, password, onInputChange } = useForm(intialForm)
+  const { errorMessage } = useSelector(state => state.auth)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    toast.error(errorMessage)
+  }, [errorMessage])
 
   const HandleSubmit = (event) => {
     event.preventDefault()
@@ -57,6 +64,7 @@ export const LoginPage = () => {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </AuthLayout>
   )
 }
