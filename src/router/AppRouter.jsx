@@ -22,9 +22,19 @@ export const AppRouter = () => {
   }
 
   return (
-    <Routes>
-      <Route path='/*' element={<AppRoutes />} />
-      <Route path='/auth/*' element={<AuthRoutes />} />
-    </Routes>
+    <>
+      {
+        status === 'authenticated'
+          ? <Routes>
+            <Route path='/*' element={<AppRoutes />} />
+          </Routes>// eslint-disable-line
+
+          : <Routes>
+            <Route path='/*' element={<AppRoutes />} />
+            <Route path='/auth/*' element={<AuthRoutes />} />
+          </Routes>// eslint-disable-line
+      }
+    </>
+
   )
 }
