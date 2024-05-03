@@ -1,3 +1,4 @@
+/* global localStorage */
 import axios from 'axios'
 
 const api = axios.create({
@@ -5,5 +6,14 @@ const api = axios.create({
 })
 
 // todo: add interceptors
+
+api.interceptors.request.use((config) => {
+  config.headers = {
+    ...config.headers,
+    'x-token': localStorage.getItem('token')
+  }
+
+  return config
+})
 
 export default api
