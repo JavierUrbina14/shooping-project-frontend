@@ -1,5 +1,7 @@
 export const ShoppingCart = () => {
   return (
-    <div>ShoppingCart</div>
+    <>
+        <h1>Probando desde mi celu</h1>
+    </>
   )
 }
