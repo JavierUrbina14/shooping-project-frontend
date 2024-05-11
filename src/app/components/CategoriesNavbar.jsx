@@ -16,8 +16,8 @@ export const CategoriesNavbar = () => {
       <div className='flex gap-2 mt-2'>
         {
         categories.map(category => (
-          <button key={category.id} className='p-1 bg-slate-400' onClick={() => HandleSubCategories(category.id, !open)}>
-            <p>{category.category}</p>
+          <button key={category.id} className='btn-category' onClick={() => HandleSubCategories(category.id, !open)}>
+            <span className='btn-category-text'>{category.category}</span>
           </button>
         ))
         }
