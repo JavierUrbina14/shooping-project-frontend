@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { SearchField } from '../../components/SearchField'
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
-import { CategoriesNavbar } from './CategoriesNavbar'
+import { CategoriesNavbar } from './'
 
 export const Navbar = () => {
   const [t, i18n] = useTranslation('global')
@@ -16,11 +16,11 @@ export const Navbar = () => {
 
   return (
     <div className='p-4 bg-primary'>
-      <div className='flex justify-around items-center'>
+      <div className='flex justify-around items-center gap-10'>
         <div className='w-36'>
           <img src='/icon.png' alt='' srcset='' />
         </div>
-        <div className='w-96'>
+        <div className='w-full'>
           <SearchField
             placeholder={t('navbar.searchplaceholder')}
             type='text'

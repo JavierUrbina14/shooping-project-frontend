@@ -1,7 +1,11 @@
+import { Navbar, Footer, Cart } from '../components'
+
 export const ShoppingCart = () => {
   return (
     <>
-        <h1>Probando desde mi celu</h1>
+      <Navbar />
+      <Cart />
+      <Footer />
     </>
   )
 }

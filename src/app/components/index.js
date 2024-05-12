@@ -1,1 +1,6 @@
+export * from './Cart'
+export * from './CategoriesNavbar'
+export * from './Footer'
+export * from './ListCardItem'
+export * from './ListCards'
 export * from './Navbar'
