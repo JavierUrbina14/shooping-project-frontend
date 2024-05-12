@@ -138,7 +138,7 @@
 .button .text {
     color: white;
     font-weight: 700;
-    font-size: 1em;
+    font-size: .8em;
     transition: 400ms;
 }
 

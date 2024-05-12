@@ -18,7 +18,9 @@ export const Navbar = () => {
     <div className='p-4 bg-primary'>
       <div className='flex justify-around items-center gap-10'>
         <div className='w-36'>
-          <img src='/icon.png' alt='' srcset='' />
+          <Link to='/'>
+            <img src='/icon.png' alt='Icono de la tienda' />
+          </Link>
         </div>
         <div className='w-full'>
           <SearchField
