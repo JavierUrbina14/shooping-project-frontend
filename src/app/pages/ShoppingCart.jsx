@@ -3,8 +3,6 @@ import { Navbar, Footer, EmptyCart, Cart } from '../components'
 
 export const ShoppingCart = () => {
   const { items } = useSelector((state) => state.cart)
-  console.log(items)
-
   return (
     <>
       <Navbar />

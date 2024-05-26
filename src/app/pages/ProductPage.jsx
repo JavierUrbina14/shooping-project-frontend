@@ -30,18 +30,18 @@ export const ProductPage = () => {
       <Navbar />
       <div className='flex justify-center'>
         <div>
-          <img style={{ width: '600px' }} src={product.image} />
+          <img style={{ width: '600px' }} src={product?.image} />
         </div>
         <div>
           <div>
-            <h1 className='text-4xl font-bold capitalize'>{product.name}</h1>
-            <h6 className='w-96'>{product.description}</h6>
-            <h6 className='capitalize'><span className='font-bold'>Categoría: </span>{product.category}</h6>
-            <h6 className='capitalize'><span className='font-bold'>Marca: </span>{product.brand}</h6>
-            <h6 className='capitalize'><span className='font-bold'>Talla: </span>{product.size}</h6>
-            <h6 className='capitalize'><span className='font-bold'>Stock disponible: </span>{product.stock}</h6>
+            <h1 className='text-4xl font-bold capitalize'>{product?.name}</h1>
+            <h6 className='w-96'>{product?.description}</h6>
+            <h6 className='capitalize'><span className='font-bold'>Categoría: </span>{product?.category}</h6>
+            <h6 className='capitalize'><span className='font-bold'>Marca: </span>{product?.brand}</h6>
+            <h6 className='capitalize'><span className='font-bold'>Talla: </span>{product?.size}</h6>
+            <h6 className='capitalize'><span className='font-bold'>Stock disponible: </span>{product?.stock}</h6>
             <div className='flex justify-around mt-4'>
-              <h2 className='text-4xl'>{formatterPrice.format(product.price)}</h2>
+              <h2 className='text-4xl'>{formatterPrice.format(product?.price)}</h2>
               <button className='Btn' onClick={handleProduct(product)}>
                 Añadir al carrito
                 <svg viewBox='0 0 16 16' className='bi bi-cart-check' height='24' width='24' xmlns='http://www.w3.org/2000/svg' fill='#fff'>

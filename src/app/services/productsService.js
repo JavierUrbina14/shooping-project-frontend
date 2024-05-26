@@ -6,7 +6,7 @@ export const ProductsService = () => {
       const response = await api.get('/products/all-products')
       return response.data
     } catch (error) {
-      console.log(error)
+      console.error(error)
       return []
     }
   }
@@ -16,7 +16,7 @@ export const ProductsService = () => {
       const response = await api.get(`/products/${id}`)
       return response.data
     } catch (error) {
-      console.log(error)
+      console.error(error)
       return []
     }
   }
