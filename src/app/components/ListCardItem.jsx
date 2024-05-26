@@ -1,12 +1,7 @@
 import { Link } from 'react-router-dom'
+import formatterPrice from '../utils/formatterPrice'
 
 export const ListCardItem = ({ product }) => {
-  const formatter = new Intl.NumberFormat('es-CL', {
-    style: 'currency',
-    currency: 'CLP',
-    minimumFractionDigits: 0
-  })
-
   return (
     <div className='card'>
       <div className='image_container'>
@@ -32,7 +27,7 @@ export const ListCardItem = ({ product }) => {
       </div>
       <div className='action'>
         <div className='price'>
-          <span>{formatter.format(product.price)}</span>
+          <span>{formatterPrice.format(product.price)}</span>
         </div>
         <Link to={`/product/${product.id}`}>
           <button className='button'>
