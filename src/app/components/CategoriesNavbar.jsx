@@ -22,16 +22,18 @@ export const CategoriesNavbar = () => {
         ))
         }
       </div>
-      <div className='block' onMouseLeave={() => setOpen(false)}>
-        {
+      {
         open &&
-          subcategories.map(subcategory => (
-            <ul key={subcategory.title}>
-              <li>{subcategory.title}</li>
-            </ul>
-          ))
+          <div className='absolute z-50 w-full bg-gray-100 flex py-5 px-2 gap-4' onMouseLeave={() => setOpen(false)}>
+            {
+              subcategories.map(subcategory => (
+                <div key={subcategory.title}>
+                  <button className='border rounded-md py-1 px-3'>{subcategory.title}</button>
+                </div>
+              ))
+            }
+          </div>
       }
-      </div>
     </>
   )
 }

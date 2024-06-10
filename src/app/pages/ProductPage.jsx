@@ -35,6 +35,7 @@ export const ProductPage = () => {
         <div>
           <div>
             <h1 className='text-4xl font-bold capitalize'>{product?.name}</h1>
+            <hr className='pb-2' />
             <h6 className='w-96'>{product?.description}</h6>
             <h6 className='capitalize'><span className='font-bold'>Categoría: </span>{product?.category}</h6>
             <h6 className='capitalize'><span className='font-bold'>Marca: </span>{product?.brand}</h6>

@@ -1,3 +1,4 @@
+/* global localStorage */
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
@@ -7,7 +8,9 @@ const initialState = {
 
 export const cartSlice = createSlice({
   name: 'cart',
-  initialState,
+  initialState: localStorage.getItem('cart')
+    ? JSON.parse(localStorage.getItem('cart'))
+    : initialState,
   reducers: {
     addItemToCart (state, { payload }) {
       const newItem = payload
@@ -18,12 +21,14 @@ export const cartSlice = createSlice({
       } else {
         state.items.push({ ...newItem, quantity: 1 })
       }
+      localStorage.setItem('cart', JSON.stringify(state))
     },
     handleItemAdd (state, { payload }) {
       const newItem = payload
       const existingItem = state.items.find(item => item.id === newItem.id)
       state.totalAmount += existingItem.price
       existingItem.quantity++
+      localStorage.setItem('cart', JSON.stringify(state))
     },
     handleItemSubstract (state, { payload }) {
       const newItem = payload
@@ -34,12 +39,14 @@ export const cartSlice = createSlice({
       } else {
         existingItem.quantity--
       }
+      localStorage.setItem('cart', JSON.stringify(state))
     },
     handleItemRemove (state, { payload }) {
       const newItem = payload
       const existingItem = state.items.find(item => item.id === newItem.id)
       state.totalAmount -= existingItem.price * existingItem.quantity
       state.items = state.items.filter(item => item.id !== newItem.id)
+      localStorage.setItem('cart', JSON.stringify(state))
     }
   }
 })

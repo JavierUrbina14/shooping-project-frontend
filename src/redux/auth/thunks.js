@@ -2,6 +2,37 @@
 import api from '../../config/axiosConfig'
 import { checkingCredentials, clearErrorMessage, login, logout } from './authSlice'
 
+export const startAdminLogin = ({ email, password }) => {
+  return (dispatch) => {
+    dispatch(checkingCredentials())
+
+    setTimeout(async () => {
+      try {
+        const { data } = await api.post('/auth/admin/sign-in', { email, password })
+        localStorage.setItem('token', data.data.token)
+        localStorage.setItem('token-init-date', new Date().getTime())
+        dispatch(login({
+          id: data.data.id,
+          firstname: data.data.firstname,
+          lastname: data.data.lastname,
+          email: data.data.email,
+          role: data.data.role,
+          status: data.data.status,
+          phone: data.data.phone,
+          address: data.data.address
+        }))
+      } catch ({ response }) {
+        dispatch(logout('Credendiales invalidas'))
+        setTimeout(() => {
+          dispatch(clearErrorMessage())
+        }
+        , 10)
+      }
+    }
+    , 2000)
+  }
+}
+
 export const startLogin = ({ email, password }) => {
   return (dispatch) => {
     dispatch(checkingCredentials())
@@ -53,7 +84,8 @@ export const checkAuthToken = () => {
       localStorage.setItem('token-init-date', new Date().getTime())
       dispatch(login({ id: data.data.id, firstname: data.data.firstname, lastname: data.data.lastname, email: data.data.email }))
     } catch (error) {
-      localStorage.clear()
+      localStorage.removeItem('token')
+      localStorage.removeItem('token-init')
       dispatch(logout())
     }
   }
