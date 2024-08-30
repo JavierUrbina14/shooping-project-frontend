@@ -42,7 +42,13 @@ export const startLogin = ({ email, password }) => {
         const { data } = await api.post('/auth/sign-in', { email, password })
         localStorage.setItem('token', data.data.token)
         localStorage.setItem('token-init-date', new Date().getTime())
-        dispatch(login({ id: data.data.id, firstname: data.data.firstname, lastname: data.data.lastname, email: data.data.email }))
+        dispatch(login({
+          id: data.data.id,
+          firstname: data.data.firstname,
+          lastname: data.data.lastname,
+          email: data.data.email,
+          role: data.data.role
+        }))
       } catch ({ response }) {
         dispatch(logout('Credendiales invalidas'))
         setTimeout(() => {
@@ -82,7 +88,7 @@ export const checkAuthToken = () => {
       const { data } = await api.get('/auth/renew')
       localStorage.setItem('token', data.data.token)
       localStorage.setItem('token-init-date', new Date().getTime())
-      dispatch(login({ id: data.data.id, firstname: data.data.firstname, lastname: data.data.lastname, email: data.data.email }))
+      dispatch(login({ id: data.data.id, firstname: data.data.firstname, lastname: data.data.lastname, email: data.data.email, role: data.data.role }))
     } catch (error) {
       localStorage.removeItem('token')
       localStorage.removeItem('token-init')

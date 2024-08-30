@@ -4,6 +4,7 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState: {
     status: 'checking', // authenticated | not-authenticated | checking
+    role: '', // user | admin
     user: {},
     errorMessage: undefined
   },
@@ -11,15 +12,18 @@ export const authSlice = createSlice({
     login: (state, { payload }) => {
       state.status = 'authenticated'
       state.user = payload
+      state.role = payload.role
       state.errorMessage = undefined
     },
     logout: (state, { payload }) => {
       state.status = 'not-authenticated'
+      state.role = ''
       state.user = {}
       state.errorMessage = payload
     },
     checkingCredentials: (state) => {
       state.status = 'checking'
+      state.role = ''
       state.user = {}
       state.errorMessage = undefined
     },
