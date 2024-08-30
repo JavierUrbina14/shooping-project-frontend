@@ -90,8 +90,8 @@ export const checkAuthToken = () => {
       localStorage.setItem('token-init-date', new Date().getTime())
       dispatch(login({ id: data.data.id, firstname: data.data.firstname, lastname: data.data.lastname, email: data.data.email, role: data.data.role }))
     } catch (error) {
+      localStorage.removeItem('token-init-date')
       localStorage.removeItem('token')
-      localStorage.removeItem('token-init')
       dispatch(logout())
     }
   }

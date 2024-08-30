@@ -23,7 +23,6 @@ export const authSlice = createSlice({
     },
     checkingCredentials: (state) => {
       state.status = 'checking'
-      state.role = ''
       state.user = {}
       state.errorMessage = undefined
     },
